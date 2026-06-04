@@ -1,8 +1,19 @@
 # 🐔 PoultryVision AI
+### Hierarchical Deep Learning & Grounded Generative AI for Poultry Disease Diagnosis
 
-An AI-powered poultry disease detection and analysis platform that helps farmers, veterinarians, and poultry researchers identify diseases from poultry images using computer vision and machine learning.
+AI-powered veterinary web platform that detects poultry diseases from images and generates actionable, medically grounded consultation reports using Computer Vision, Explainable AI, and Generative AI.
 
-## 🚀 Live Demo
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
+![React](https://img.shields.io/badge/React-Frontend-61DAFB)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-Keras-FF6F00)
+![Gemini](https://img.shields.io/badge/Gemini-2.5_Flash-purple)
+![Netlify](https://img.shields.io/badge/Frontend-Netlify-success)
+![Render](https://img.shields.io/badge/Backend-Render-blue)
+
+---
+
+## 🌐 Live Deployment
 
 ### Frontend
 https://poultryvisionai.netlify.app
@@ -12,54 +23,257 @@ https://poultryvision-ai.onrender.com
 
 ---
 
-## 📌 Features
+## 📖 Executive Summary
 
-- 🔍 Poultry disease detection from uploaded images
-- 🤖 AI-powered disease analysis
-- 📊 Disease confidence scores
-- 📖 Poultry disease information library
-- 🌐 Modern responsive user interface
-- ⚡ Fast API-powered predictions
-- ☁️ Cloud deployment with Netlify and Render
+PoultryVision AI is an end-to-end intelligent veterinary assistant designed to identify poultry diseases from images and provide grounded treatment recommendations.
+
+Unlike traditional flat multi-class classification systems, PoultryVision AI employs a **Hierarchical CNN Architecture** that separates disease detection into two specialized stages:
+
+1. **Bouncer Model**
+   - Healthy vs Sick Triage
+   - Optimized to reduce false negatives
+
+2. **Doctor Model**
+   - Disease-specific diagnosis
+   - Bumblefoot
+   - Chronic Respiratory Disease (CRD)
+   - Fowl Pox
+   - Infectious Coryza
+
+The diagnostic results are then combined with Explainable AI visualizations and passed through a constrained Gemini-powered reasoning pipeline that generates structured veterinary consultation reports.
 
 ---
 
-## 🛠️ Tech Stack
+# 🚀 Features
 
-### Frontend
+### Computer Vision
+- Poultry disease detection from images
+- Hierarchical CNN architecture
+- Binary triage + disease classification
+- Confidence scoring
+
+### Explainable AI
+- Grad-CAM heatmaps
+- Visual disease localization
+- CNN decision transparency
+
+### Generative AI
+- Gemini 2.5 Flash integration
+- Grounded generation framework
+- Hallucination-reduced consultation reports
+- Structured action plans
+
+### Web Platform
+- Responsive React frontend
+- FastAPI backend
+- REST API architecture
+- Cloud deployment
+
+---
+
+# 🏗️ System Architecture
+
+```text
+Image Upload
+      │
+      ▼
+┌─────────────────┐
+│ Bouncer Model   │
+│ Healthy / Sick  │
+└─────────────────┘
+      │
+      ▼
+┌─────────────────┐
+│ Doctor Model    │
+│ Disease Class   │
+└─────────────────┘
+      │
+      ▼
+┌─────────────────┐
+│ Grad-CAM Engine │
+└─────────────────┘
+      │
+      ▼
+┌─────────────────┐
+│ Gemini 2.5      │
+│ Grounded AI     │
+└─────────────────┘
+      │
+      ▼
+Veterinary Consultation Report
+```
+
+---
+
+# 🧹 Data Engineering Pipeline
+
+The training dataset was constructed using:
+
+- Original poultry disease datasets
+- Roboflow-translated datasets
+- Augmented image collections
+
+### Data Cleaning
+
+A custom TensorFlow-based silent cleaner was implemented to:
+
+- Remove corrupt images
+- Remove unreadable files
+- Prevent training instability
+- Improve gradient convergence
+
+---
+
+# 🧠 Hierarchical Deep Learning Models
+
+## Phase 1 — Bouncer Model
+
+Binary classification model responsible for determining:
+
+```text
+Healthy
+or
+Sick
+```
+
+### Objective
+
+Reduce false negatives and ensure potentially sick birds are not ignored.
+
+### Performance
+
+| Metric | Score |
+|----------|----------|
+| Accuracy | 82% |
+| Precision (Sick) | 90% |
+| Recall (Sick) | 82% |
+| F1 Score | 81% |
+
+### Analysis
+
+The Bouncer model demonstrates strong reliability for disease screening and prioritizes disease detection over risky healthy classifications.
+
+---
+
+## Phase 2 — Doctor Model
+
+Multi-class disease classifier responsible for identifying:
+
+- Bumblefoot
+- Chronic Respiratory Disease (CRD)
+- Fowl Pox
+- Infectious Coryza
+
+### Performance
+
+| Metric | Score |
+|----------|----------|
+| Accuracy | 72% |
+
+### CRD
+
+| Metric | Score |
+|----------|----------|
+| Precision | 80% |
+| Recall | 82% |
+| F1 Score | 81% |
+
+### Fowl Pox
+
+| Metric | Score |
+|----------|----------|
+| Precision | 53% |
+| Recall | 90% |
+
+### Analysis
+
+Confidence distributions cluster between 50% and 80%, indicating informed classifications rather than random or overconfident predictions.
+
+---
+
+# 🔍 Explainable AI
+
+To improve trust and interpretability:
+
+### Grad-CAM Heatmaps
+
+The system generates visual explanations showing:
+
+- Disease-specific regions
+- Anatomical focus points
+- CNN attention areas
+
+This allows users to understand why a prediction was made.
+
+---
+
+# 🤖 Grounded AI Consultation Engine
+
+After disease classification:
+
+1. Model probabilities are extracted.
+2. Grad-CAM explanations are generated.
+3. Diagnostic information is passed to Gemini 2.5 Flash.
+4. Gemini is constrained using veterinary dictionaries and structured prompts.
+
+### Generated Output
+
+- Diagnostic Summary
+- Confidence Analysis
+- Immediate Action Plan
+- Isolation Recommendations
+- Ongoing Care Guidance
+
+This reduces hallucinations and ensures medically grounded responses.
+
+---
+
+# 💻 Technology Stack
+
+## Frontend
+
 - React
 - Vite
 - React Router
 - Tailwind CSS
-- JavaScript
 
-### Backend
-- Python
+## Backend
+
 - FastAPI
-- Machine Learning / Deep Learning Models
-- Uvicorn
+- Python
+- TensorFlow
+- Keras
+- Gemini API
 
-### Deployment
-- Netlify (Frontend)
-- Render (Backend)
+## AI & ML
+
+- CNN Models
+- Grad-CAM
+- Explainable AI
+- Grounded LLM Generation
+
+## Deployment
+
+- Netlify
+- Render
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
 ```text
-PoultryVision_AI/
+PoultryVision_AI
 │
-├── poultry_frontend/
-│   ├── apps/
-│   │   └── web/
-│   ├── src/
-│   └── public/
+├── poultry_frontend
+│   ├── apps
+│   │   └── web
+│   ├── src
+│   └── public
 │
-├── backend/
-│   ├── models/
-│   ├── routes/
-│   ├── services/
+├── backend
+│   ├── models
+│   ├── routes
+│   ├── services
 │   └── main.py
 │
 └── README.md
@@ -67,91 +281,48 @@ PoultryVision_AI/
 
 ---
 
-## ⚙️ Installation
+# ⚙️ Local Development
 
-### Clone Repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/AYUSHMSINGH2004/PoultryVision_AI.git
 cd PoultryVision_AI
 ```
 
----
-
-## Frontend Setup
-
-Navigate to frontend directory:
+## Frontend
 
 ```bash
 cd poultry_frontend
-```
-
-Install dependencies:
-
-```bash
 npm install
-```
-
-Create a `.env.local` file:
-
-```env
-VITE_API_BASE_URL=http://localhost:8000
-VITE_BACKEND_URL=http://localhost:8000
-```
-
-Run development server:
-
-```bash
 npm run dev
 ```
 
----
-
-## Backend Setup
-
-Create virtual environment:
-
-```bash
-python -m venv venv
-```
-
-Activate virtual environment:
-
-### Windows
-
-```bash
-venv\Scripts\activate
-```
-
-### Linux / Mac
-
-```bash
-source venv/bin/activate
-```
-
-Install dependencies:
+## Backend
 
 ```bash
 pip install -r requirements.txt
-```
-
-Run backend server:
-
-```bash
 uvicorn main:app --reload
 ```
 
-Backend will be available at:
-
-```text
-http://localhost:8000
-```
-
 ---
 
-## 🌍 Environment Variables
+# 🌍 Deployment
 
-### Frontend
+## Netlify
+
+```text
+Base Directory:
+poultry_frontend
+
+Build Command:
+npm run build
+
+Publish Directory:
+dist/apps/web
+```
+
+### Environment Variables
 
 ```env
 VITE_API_BASE_URL=https://poultryvision-ai.onrender.com
@@ -160,109 +331,51 @@ VITE_BACKEND_URL=https://poultryvision-ai.onrender.com
 
 ---
 
-## 🚀 Deployment
+# 📸 Screenshots
 
-### Frontend (Netlify)
-
-Build Settings:
-
-```text
-Base Directory: poultry_frontend
-Build Command: npm run build
-Publish Directory: dist/apps/web
-```
-
-Environment Variables:
-
-```env
-VITE_API_BASE_URL=https://poultryvision-ai.onrender.com
-VITE_BACKEND_URL=https://poultryvision-ai.onrender.com
-```
-
----
-
-### Backend (Render)
-
-Start Command:
-
-```bash
-uvicorn main:app --host 0.0.0.0 --port $PORT
-```
-
----
-
-## 📸 Screenshots
-
-Add screenshots of:
+Add screenshots here:
 
 - Home Page
-- Disease Detection Page
+- Disease Detection Interface
 - Prediction Results
-- Poultry Information Page
+- Grad-CAM Visualization
+- AI Consultation Report
 
 ---
 
-## 🎯 Use Cases
+# 🔮 Future Roadmap
 
-- Poultry Farmers
-- Veterinary Professionals
-- Agricultural Researchers
-- Poultry Farm Management Systems
-- Educational Projects
-
----
-
-## 🔮 Future Improvements
-
-- Mobile application support
-- Real-time disease monitoring
-- Multi-language support
-- Farm analytics dashboard
-- Disease history tracking
-- Offline prediction support
+- Mobile Application
+- Real-Time Farm Monitoring
+- Additional Disease Classes
+- Disease History Tracking
+- Multilingual Support
+- Veterinary Dashboard
+- Offline Inference Support
 
 ---
 
-## 🤝 Contributing
+# 👥 Contributors
 
-Contributions are welcome.
-
-1. Fork the repository
-2. Create a feature branch
-
-```bash
-git checkout -b feature-name
-```
-
-3. Commit changes
-
-```bash
-git commit -m "Added new feature"
-```
-
-4. Push branch
-
-```bash
-git push origin feature-name
-```
-
-5. Open a Pull Request
+| Name | Registration Number | Role |
+|--------|--------|--------|
+| Ayush M Singh | 23BDS0033 | Project Lead, Full Stack Development, AI Integration |
+| Venkata Sriram Topalli | 23BCE0441 | Contributor, Research, Testing & Development |
 
 ---
 
-## 👨‍💻 Author
+# ⭐ Support
 
-**Ayush M Singh**
+If you found this project useful:
 
-GitHub:
-https://github.com/AYUSHMSINGH2004
+⭐ Star the repository
 
----
+🍴 Fork the project
 
-## 📄 License
-
-This project is licensed under the MIT License.
+🤝 Contribute improvements
 
 ---
 
-⭐ If you found this project useful, consider giving it a star on GitHub.
+## 📜 License
+
+This project is intended for educational, research, and academic purposes.
