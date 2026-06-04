@@ -150,7 +150,7 @@ export default function PredictPage() {
       formData.append('image', uploadedImage);
       formData.append('gemini_api_key', apiKey);
 
-      const baseUrl = import.meta.env.VITE_API_BASE_URL || 'https://poultry-disease-detector-backend-vm42.onrender.com';
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || 'https://poultryvision-ai.onrender.com';
       
       const response = await fetch(`${baseUrl}/analyze`, {
         method: 'POST',
