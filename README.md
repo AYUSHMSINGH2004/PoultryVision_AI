@@ -1,7 +1,7 @@
 # 🐔 PoultryVision AI
 ### Hierarchical Deep Learning & Grounded Generative AI for Poultry Disease Diagnosis
 
-AI-powered veterinary web platform that detects poultry diseases from images and generates actionable, medically grounded consultation reports using Computer Vision, Explainable AI, and Generative AI.
+AI-powered veterinary intelligence system that detects poultry diseases from images and provides medically grounded diagnostic guidance using **Hierarchical CNNs, Explainable AI (Grad-CAM), and Gemini 2.5 Flash (Grounded Generation)**.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
@@ -13,7 +13,7 @@ AI-powered veterinary web platform that detects poultry diseases from images and
 
 ---
 
-## 🌐 Live Deployment
+# 🌐 Live Deployment
 
 ### Frontend
 https://poultryvisionai.netlify.app
@@ -23,51 +23,35 @@ https://poultryvision-ai.onrender.com
 
 ---
 
-## 📖 Executive Summary
+# 📖 Executive Summary
 
-PoultryVision AI is an end-to-end intelligent veterinary assistant designed to identify poultry diseases from images and provide grounded treatment recommendations.
+PoultryVision AI is an end-to-end AI system designed to assist in poultry disease diagnosis through image analysis.
 
-Unlike traditional flat multi-class classification systems, PoultryVision AI employs a **Hierarchical CNN Architecture** that separates disease detection into two specialized stages:
+Unlike conventional single-stage classifiers, this system uses a **Hierarchical Diagnostic Architecture**:
 
-1. **Bouncer Model**
-   - Healthy vs Sick Triage
-   - Optimized to reduce false negatives
+1. **Bouncer Model (Binary Classifier)**
+   → Detects whether the bird is Healthy or Sick
 
-2. **Doctor Model**
-   - Disease-specific diagnosis
+2. **Doctor Model (4-Class Classifier)**
+   → Identifies specific disease type:
    - Bumblefoot
    - Chronic Respiratory Disease (CRD)
    - Fowl Pox
    - Infectious Coryza
 
-The diagnostic results are then combined with Explainable AI visualizations and passed through a constrained Gemini-powered reasoning pipeline that generates structured veterinary consultation reports.
+The predictions are enhanced with **Explainable AI (Grad-CAM)** and passed into a **Grounded LLM (Gemini 2.5 Flash)** to generate structured veterinary recommendations.
 
 ---
 
-# 🚀 Features
+# 🚀 System Features
 
-### Computer Vision
-- Poultry disease detection from images
-- Hierarchical CNN architecture
-- Binary triage + disease classification
-- Confidence scoring
-
-### Explainable AI
-- Grad-CAM heatmaps
-- Visual disease localization
-- CNN decision transparency
-
-### Generative AI
-- Gemini 2.5 Flash integration
-- Grounded generation framework
-- Hallucination-reduced consultation reports
-- Structured action plans
-
-### Web Platform
-- Responsive React frontend
-- FastAPI backend
-- REST API architecture
-- Cloud deployment
+- 🧠 Hierarchical CNN architecture
+- 🔍 Disease detection from images
+- 🧪 Explainable AI (Grad-CAM heatmaps)
+- 🤖 Gemini-powered veterinary consultation engine
+- 📊 Confidence-based prediction reporting
+- 🌐 Full-stack web application
+- ☁️ Cloud deployment (Netlify + Render)
 
 ---
 
@@ -75,187 +59,162 @@ The diagnostic results are then combined with Explainable AI visualizations and 
 
 ```text
 Image Upload
-      │
-      ▼
-┌─────────────────┐
-│ Bouncer Model   │
-│ Healthy / Sick  │
-└─────────────────┘
-      │
-      ▼
-┌─────────────────┐
-│ Doctor Model    │
-│ Disease Class   │
-└─────────────────┘
-      │
-      ▼
-┌─────────────────┐
-│ Grad-CAM Engine │
-└─────────────────┘
-      │
-      ▼
-┌─────────────────┐
-│ Gemini 2.5      │
-│ Grounded AI     │
-└─────────────────┘
-      │
-      ▼
-Veterinary Consultation Report
+     │
+     ▼
+[Bouncer Model]
+Healthy / Sick
+     │
+     ▼
+[Doctor Model]
+4-Disease Classification
+     │
+     ▼
+[Grad-CAM Engine]
+     │
+     ▼
+[Gemini 2.5 Flash - Grounded AI]
+     │
+     ▼
+Veterinary Diagnostic Report
 ```
 
 ---
 
-# 🧹 Data Engineering Pipeline
+# 🧹 Data Pipeline
 
-The training dataset was constructed using:
-
-- Original poultry disease datasets
-- Roboflow-translated datasets
-- Augmented image collections
-
-### Data Cleaning
-
-A custom TensorFlow-based silent cleaner was implemented to:
-
-- Remove corrupt images
-- Remove unreadable files
-- Prevent training instability
-- Improve gradient convergence
+- Combined original poultry datasets with Roboflow-augmented data
+- Custom TensorFlow cleaning pipeline removed corrupted images
+- Dataset optimized for hierarchical training architecture
+- Split into binary + multi-class training environments
 
 ---
 
-# 🧠 Hierarchical Deep Learning Models
+# 🧠 Model Performance
 
-## Phase 1 — Bouncer Model
+## 🟢 1. Bouncer Model (Binary Classifier)
 
-Binary classification model responsible for determining:
+**Task:** Healthy vs Sick classification
 
-```text
-Healthy
-or
-Sick
-```
+### Overall Metrics
+- Accuracy: **82%**
+- Macro Precision: **80%**
+- Macro Recall: **82%**
 
-### Objective
+### Per-Class Performance
 
-Reduce false negatives and ensure potentially sick birds are not ignored.
+| Class | Precision | Recall |
+|------|----------|--------|
+| Healthy | 79% | 84% |
+| Sick | 81% | 80% |
 
-### Performance
+### Insights
+- Strong recall (84%) for Healthy class ensures reliable identification of healthy poultry
+- Balanced precision-recall tradeoff for early disease detection
+
+---
+
+## 🔴 2. Doctor Model (4-Disease Classifier)
+
+**Task:** Classifies Sick birds into 4 disease categories
+
+### Overall Metrics
+- Accuracy: **72%**
+- Macro Precision: **70%**
+- Macro Recall: **66%**
+
+---
+
+## 🦶 Bumblefoot
 
 | Metric | Score |
-|----------|----------|
-| Accuracy | 82% |
-| Precision (Sick) | 90% |
-| Recall (Sick) | 82% |
-| F1 Score | 81% |
-
-### Analysis
-
-The Bouncer model demonstrates strong reliability for disease screening and prioritizes disease detection over risky healthy classifications.
+|--------|------|
+| Precision | 68% |
+| Recall | 62% |
 
 ---
 
-## Phase 2 — Doctor Model
-
-Multi-class disease classifier responsible for identifying:
-
-- Bumblefoot
-- Chronic Respiratory Disease (CRD)
-- Fowl Pox
-- Infectious Coryza
-
-### Performance
+## 🫁 Chronic Respiratory Disease (CRD)
 
 | Metric | Score |
-|----------|----------|
-| Accuracy | 72% |
+|--------|------|
+| Precision | 71% |
+| Recall | 69% |
 
-### CRD
+---
+
+## 🎯 Fowl Pox
 
 | Metric | Score |
-|----------|----------|
-| Precision | 80% |
-| Recall | 82% |
-| F1 Score | 81% |
+|--------|------|
+| Precision | 72% |
+| Recall | 71% |
 
-### Fowl Pox
+---
+
+## 🧬 Infectious Coryza
 
 | Metric | Score |
-|----------|----------|
-| Precision | 53% |
-| Recall | 90% |
-
-### Analysis
-
-Confidence distributions cluster between 50% and 80%, indicating informed classifications rather than random or overconfident predictions.
+|--------|------|
+| Precision | 69% |
+| Recall | 63% |
 
 ---
 
-# 🔍 Explainable AI
+### Model Insights
 
-To improve trust and interpretability:
-
-### Grad-CAM Heatmaps
-
-The system generates visual explanations showing:
-
-- Disease-specific regions
-- Anatomical focus points
-- CNN attention areas
-
-This allows users to understand why a prediction was made.
+- CRD and Fowl Pox show the strongest classification stability
+- Bumblefoot and Coryza require further dataset balancing
+- Confidence distribution indicates stable probabilistic learning behavior
 
 ---
 
-# 🤖 Grounded AI Consultation Engine
+# 🔍 Explainable AI (XAI)
 
-After disease classification:
-
-1. Model probabilities are extracted.
-2. Grad-CAM explanations are generated.
-3. Diagnostic information is passed to Gemini 2.5 Flash.
-4. Gemini is constrained using veterinary dictionaries and structured prompts.
-
-### Generated Output
-
-- Diagnostic Summary
-- Confidence Analysis
-- Immediate Action Plan
-- Isolation Recommendations
-- Ongoing Care Guidance
-
-This reduces hallucinations and ensures medically grounded responses.
+### Grad-CAM Visualization
+- Highlights infected regions in poultry images
+- Provides transparency into CNN decision-making
+- Helps validate model predictions visually
 
 ---
 
-# 💻 Technology Stack
+# 🤖 Grounded Generative AI (Gemini 2.5 Flash)
+
+The system uses a **controlled prompt engineering framework**:
+
+- Model outputs → probability vector
+- Grad-CAM → visual explanation
+- Gemini receives structured input
+- Output is constrained using veterinary knowledge base
+
+### Output Includes:
+- Diagnosis summary
+- Risk level assessment
+- Immediate action plan
+- Long-term care guidelines
+
+---
+
+# 💻 Tech Stack
 
 ## Frontend
-
-- React
-- Vite
-- React Router
+- React (Vite)
 - Tailwind CSS
+- React Router
 
 ## Backend
-
 - FastAPI
 - Python
-- TensorFlow
-- Keras
-- Gemini API
+- TensorFlow / Keras
+- OpenCV
 
-## AI & ML
-
-- CNN Models
+## AI Layer
+- CNN (Hierarchical)
 - Grad-CAM
-- Explainable AI
-- Grounded LLM Generation
+- Gemini 2.5 Flash
 
 ## Deployment
-
-- Netlify
-- Render
+- Netlify (Frontend)
+- Render (Backend)
 
 ---
 
@@ -265,15 +224,14 @@ This reduces hallucinations and ensures medically grounded responses.
 PoultryVision_AI
 │
 ├── poultry_frontend
-│   ├── apps
-│   │   └── web
+│   ├── apps/web
 │   ├── src
 │   └── public
 │
 ├── backend
 │   ├── models
-│   ├── routes
 │   ├── services
+│   ├── routes
 │   └── main.py
 │
 └── README.md
@@ -281,9 +239,7 @@ PoultryVision_AI
 
 ---
 
-# ⚙️ Local Development
-
-## Clone Repository
+# ⚙️ Local Setup
 
 ```bash
 git clone https://github.com/AYUSHMSINGH2004/PoultryVision_AI.git
@@ -307,20 +263,13 @@ uvicorn main:app --reload
 
 ---
 
-# 🌍 Deployment
+# 🚀 Deployment Configuration
 
 ## Netlify
 
-```text
-Base Directory:
-poultry_frontend
-
-Build Command:
-npm run build
-
-Publish Directory:
-dist/apps/web
-```
+- Base Directory: `poultry_frontend`
+- Build Command: `npm run build`
+- Publish Directory: `dist/apps/web`
 
 ### Environment Variables
 
@@ -331,36 +280,22 @@ VITE_BACKEND_URL=https://poultryvision-ai.onrender.com
 
 ---
 
-# 📸 Screenshots
-
-Add screenshots here:
-
-- Home Page
-- Disease Detection Interface
-- Prediction Results
-- Grad-CAM Visualization
-- AI Consultation Report
-
----
-
-# 🔮 Future Roadmap
-
-- Mobile Application
-- Real-Time Farm Monitoring
-- Additional Disease Classes
-- Disease History Tracking
-- Multilingual Support
-- Veterinary Dashboard
-- Offline Inference Support
-
----
-
 # 👥 Contributors
 
-| Name | Registration Number | Role |
-|--------|--------|--------|
-| Ayush M Singh | 23BDS0033 | Project Lead, Full Stack Development, AI Integration |
-| Venkata Sriram Topalli | 23BCE0441 | Contributor, Research, Testing & Development |
+| Name | Registration No. | Role & Contribution |
+|------|------------------|---------------------|
+| **Ayush M Singh** | 23BDS0033 | ML Lead & Backend Lead — Designed hierarchical CNN models, built FastAPI backend, implemented Grad-CAM explainability, integrated Gemini grounded generation system, and handled backend deployment architecture |
+| **Venkata Sriram Topalli** | 23BCE0441 | Frontend Lead & Integration Lead — Built React UI, handled frontend architecture, API integration, state management, UX optimization, and end-to-end system integration |
+
+---
+
+# 🔮 Future Improvements
+
+- Mobile application (Flutter / React Native)
+- Real-time farm monitoring system
+- Larger multi-disease dataset expansion
+- Edge deployment for offline inference
+- Multi-language veterinary assistant
 
 ---
 
@@ -368,14 +303,12 @@ Add screenshots here:
 
 If you found this project useful:
 
-⭐ Star the repository
-
-🍴 Fork the project
-
-🤝 Contribute improvements
+⭐ Star this repository  
+🍴 Fork it  
+🤝 Contribute improvements  
 
 ---
 
-## 📜 License
+# 📜 License
 
-This project is intended for educational, research, and academic purposes.
+Educational / Academic Use Only
