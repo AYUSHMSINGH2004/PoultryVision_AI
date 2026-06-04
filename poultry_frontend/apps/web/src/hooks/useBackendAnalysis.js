@@ -5,7 +5,7 @@ export function useBackendAnalysis() {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   const analyzeImage = async (imageFile, apiKey) => {
-    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://poultryvision-ai.onrender.com';
     setIsAnalyzing(true);
 
     try {
