@@ -23,6 +23,17 @@ https://poultryvision-ai.onrender.com
 
 ---
 
+# 📂 Dataset
+
+📦 Google Drive Dataset (Training Data)
+
+https://drive.google.com/drive/folders/1zi5JhKOdnpP-1-FYupjOVPMtwvuyZhJB?usp=drive_link
+
+> This dataset includes curated poultry disease images used for training the hierarchical CNN models. It contains multiple disease classes including Bumblefoot, CRD, Fowl Pox, and Infectious Coryza.
+
+---
+
+
 # 📖 Executive Summary
 
 PoultryVision AI is an end-to-end AI system designed to assist in poultry disease diagnosis through image analysis.
